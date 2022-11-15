@@ -6,11 +6,22 @@ const createCreationService = (newCreation) => {
 }
 
 const creationListService = () => {
-  return service.get("/creations")
+  return service.get("/creation")
 }
+
+
+const creationDetailsService = () => {
+   return service.get("/creation")
+ }
+
+
+// const creationListService = () => {
+//   return service.get("/creations")
+// }
 
 
 export {
     createCreationService,
-    creationListService
+    creationListService,
+    creationDetailsService
 }

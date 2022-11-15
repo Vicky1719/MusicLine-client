@@ -23,7 +23,6 @@ function AuthWrapper(props) {
             setIsFetching(false)
 
         } catch (error) {
-            console.log(error)
             setIsLoggedIn(false)
             setUser(null)
             setIsFetching(false)

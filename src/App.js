@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Navbar from './componentes/Navbar';
+import Navbar from './paginas/Navbar';
 import {Routes, Route} from "react-router-dom";
 import Signup from './paginas/Signup';
 import Login from './paginas/Login';
@@ -11,6 +11,7 @@ import Profile from './paginas/Profile'
 import CreationCreate from './paginas/CreationCreate';
 import CreationList from './paginas/CreationList';
 import CreationDetail from './paginas/CreationDetail';
+import isPrivate from './paginas/isPrivate';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile/>} />
+        <Route path="/profile" element={<isPrivate><Profile/></isPrivate>} />
         <Route path="/creation/create" element={<CreationCreate/>} />
         <Route path="/creation" element={<CreationList/>}/>
         <Route path="/creation/:creationId" element={<CreationDetail/>}/>
