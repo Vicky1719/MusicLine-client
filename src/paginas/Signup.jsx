@@ -32,7 +32,6 @@ function Signup() {
 
     try {
       await signupService(newUser)
-      console.log(newUser)
       navigate("/login")
 
     } catch (error) {
@@ -66,9 +65,9 @@ function Signup() {
 
 <label>Usuario: </label>
         <input
-          type="lastName"
-          name="lastName"
-          value={lastName}
+          type="username"
+          name="username"
+          value={username}
           onChange={handleUsernameChange}
         />
 

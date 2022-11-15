@@ -6,7 +6,7 @@ const createCreationService = (newCreation) => {
 }
 
 const creationListService = () => {
-  return service.get("/creation")
+  return service.get("/creations")
 }
 
 
