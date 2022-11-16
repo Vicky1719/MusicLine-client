@@ -1,46 +1,42 @@
-// import React from 'react'
-// import {useEffect} from 'react'
-// import {useState} from 'react'
-// import {useNavigate, useParams} from 'react-router-dom'
-// import {useState, useContext, useEffect} from "react"
-// import {createCreationService, creationListService} from '../services/creation.services'
+import React from 'react'
+import {useEffect} from 'react'
+import {useState} from 'react'
+import {useNavigate, useParams} from 'react-router-dom'
+import {createCreationService, creationListService} from '../services/creation.services'
 
 
-// function CreationCreate() {
-//   const [creationList, setCreationList] = useState([])
+function CreationCreate() {
+  const [creationList, setCreationList] = useState([])
 
-//   useEffect(() => {
-//   getCreation()
-//   }, [])
+  useEffect(() => {
+  getCreation()
+  }, [])
 
-//   const getCreation = async () => {
-//     try {
-//         const response = await creationListService()
-//         setCreationList(response.data)
-//     }catch(error) {
-//     }
-//   }
-
-
-//   return (
-//     <div>
-//         <h3>Nueva Creación</h3>
-//         <form>
-//             <label htmlFor="name">Nombre:</label>
-//             <br />
-//             <label htmlFor="description">Descripción:</label>
-//             <br />
-//             <label htmlFor="letter">Letra:</label>
-// <br />
-// <label htmlFor="sing">Música:</label>
-// <br />
-// <label htmlFor="song">Canción:</label>
+  const getCreation = async () => {
+    try {
+        const response = await creationListService()
+        setCreationList(response.data)
+    }catch(error) {
+    }
+  }
 
 
-            
-//         </form>
-//     </div>
-//   )
-// }
+  return (
+    <div>
+        <h3>Haz tu creación</h3>
+        <form>
+            <label htmlFor="name">Nombre:</label>
+            <br />
+            <label htmlFor="description">Description:</label>
+            <label htmlFor="letter">Letter:</label>
+            <label htmlFor="sing">Música:</label>
+            <label htmlFor="song">Canción:</label>
 
-// export default CreationCreate
+
+        
+        </form>
+    </div>
+  )
+}
+
+export default CreationCreate

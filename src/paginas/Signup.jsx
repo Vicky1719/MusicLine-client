@@ -6,15 +6,15 @@ function Signup() {
 
   const navigate = useNavigate()
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [username, setUsername] = useState ("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("")
 
-  const handleFirstNameChange = (e) => setFirstName(e.target.value);
-  const handleLastNameChange = (e) => setLastName(e.target.value);
+  const handleFirstnameChange = (e) => setFirstname(e.target.value);
+  const handleLastnameChange = (e) => setLastname(e.target.value);
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
@@ -23,8 +23,8 @@ function Signup() {
     e.preventDefault();
 
     const newUser = {
-      firstName: firstName,
-      lastName: lastName,
+      firstname: firstname,
+      lastname: lastname,
       username: username,
       email: email,
       password: password
@@ -49,18 +49,18 @@ function Signup() {
       <form onSubmit={handleSignup}>
         <label>Nombre:</label>
         <input
-          type="firstName"
-          name="firstName"
-          value={firstName}
-          onChange={handleFirstNameChange}
+          type="firstname"
+          name="firstname"
+          value={firstname}
+          onChange={handleFirstnameChange}
         />
 
         <label>Apellidos: </label>
         <input
-          type="lastName"
-          name="lastName"
-          value={lastName}
-          onChange={handleLastNameChange}
+          type="lastname"
+          name="lastname"
+          value={lastname}
+          onChange={handleLastnameChange}
         />
 
 <label>Usuario: </label>
