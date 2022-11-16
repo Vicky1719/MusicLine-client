@@ -55,7 +55,7 @@ function Profile() {
 
   await updateProfileService(userId, updatedProfile)
   
-  navigate("/profile")
+  navigate("/profile/edit")
 
   }catch(error) {
     navigate("/error")
@@ -74,7 +74,6 @@ function Profile() {
 
       navigate("/profile")
     } catch (error) {
-      console.log(error)
       navigate("/error")
     }
   }
