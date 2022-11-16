@@ -16,14 +16,14 @@ function Navbar() {
         <div>
           <NavLink to="/">Inicio</NavLink>
           <NavLink to="/profile">Perfil</NavLink>
-          <NavLink to="/creaciones">Creaciones</NavLink>
+          <NavLink to="/creation">Creaciones</NavLink>
 
           <button onClick={handleLogout}>Cerrar sesión</button>
         </div>
       ) : (
         <div>
           <NavLink to="/">Inicio</NavLink>
-          <NavLink to="/creaciones">Creaciones</NavLink>
+          <NavLink to="/creation">Creaciones</NavLink>
           <NavLink to="/signup">Regístrate</NavLink>
           <NavLink to="/login">Accede</NavLink>
         </div>

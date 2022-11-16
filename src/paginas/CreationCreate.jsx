@@ -2,38 +2,67 @@ import React from 'react'
 import {useEffect} from 'react'
 import {useState} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'
-import {createCreationService, creationListService} from '../services/creation.services'
+import {createCreationService} from '../services/creation.services'
 
 
-function CreationCreate() {
-  const [creationList, setCreationList] = useState([])
+function CreationCreate(props) {
+  const [nameInput, setNameInput] = useState("")
+  const [descriptionInput, setDescriptionInput] = useState("")
+  const [letterInput, setLetterInput] = useState()
+  const [musicInput, setMusicInput] = useState("")
+  const [songInput, setSongInput] = useState("")
+  
 
-  useEffect(() => {
-  getCreation()
-  }, [])
+  const handleNameChange = (event) => setNameInput(event.target.value)
+  const handleDescriptionChange = (event) => setDescriptionInput(event.target.value)
+  const handleLetterChange = (event) => setLetterInput(event.target.value)
+  const handleMusicChange = (event) => setMusicInput(event.target.value)
+  const handleSongChange = (event) => setSongInput(event.target.value)
+ 
 
-  const getCreation = async () => {
-    try {
-        const response = await creationListService()
-        setCreationList(response.data)
-    }catch(error) {
-    }
+const handleSubmit = async (event) => {
+  event.preventDefault()
+
+  const newCreation= {
+    name: nameInput,
+    description: descriptionInput,
+    letterr: letterInput,
+    music: musicInput,
+    song: songInput,
+    
   }
+  try {
+    await createCreationService(newCreation)
+    navigate("/profile")
+    
+  } catch(error) {
+    console.log(error)
+  }
+}
+
 
 
   return (
     <div>
-        <h3>Haz tu creación</h3>
+        <h3>Crea tu nueva creración</h3>
         <form>
             <label htmlFor="name">Nombre:</label>
+            <input type="text" name="name" value={nameInput} onChange={handleNameChange} />
             <br />
-            <label htmlFor="description">Description:</label>
-            <label htmlFor="letter">Letter:</label>
-            <label htmlFor="sing">Música:</label>
+            <label htmlFor="description">:</label>
+            <input type="text" name="description" value={descriptionInput} onChange={handleDescriptionChange} />
+            <br />
+            <label htmlFor="letter">Letra de la creación:</label>
+            <input type="text" name="letter" value={letterInput} onChange={handleLetterChange} />
+            <br />
+            <label htmlFor="music">Música:</label>
+            <input type="text" name="music" value={musicInput} onChange={handleMusicChange} />
+            <br />
             <label htmlFor="song">Canción:</label>
-
-
-        
+            <input type="text" name="song" value={songInput} onChange={handleSongChange} />
+            <br />
+           
+            <button onClick={handleSubmit}>Crea</button>
         </form>
     </div>
   )
