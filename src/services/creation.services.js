@@ -19,10 +19,14 @@ const creationDetailsService = (creationId) => {
    return service.patch(`/creation/${creationId}/edit`, creationUpdate)
  }
 
-
+ const createCommentService = (creationId) => {
+  return service.get(`/creation/${creationId}/comment`)
+}
+ 
 export {
     createCreationService,
     creationListService,
     creationDetailsService,
-    creationEditService
+    creationEditService,
+    createCommentService
 }

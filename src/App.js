@@ -14,6 +14,7 @@ import CreationList from './paginas/CreationList';
 import CreationDetail from './paginas/CreationDetail';
 import CreationEdit from "./paginas/CreationEdit";
 import IsPrivate from './paginas/IsPrivate'
+import CommentCreate from './paginas/CommentCreate';
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
         <Route path="/creation/:creationId" element={<CreationDetail/>}/>
         <Route path="/creation" element={<CreationList/>} />
         <Route path="/creation/:creationId/edit" element={<CreationEdit/>}/>
-
+        <Route path="/creation/comment" element={<CommentCreate/>}/>
+       
         {/* errores */}
 
         <Route path="/error" element={<Error/>} />

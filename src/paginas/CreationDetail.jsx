@@ -40,17 +40,17 @@ navigate("/error")
   return (
     <div>
       <h2>Detalles</h2>
-      <p>{creationDetail.name}</p>
-      <p>{creationDetail.description}</p>
-      <p>{creationDetail.letter}</p>
-      <p>{creationDetail.sing}</p>
-      <p>{creationDetail.song}</p>
+      <p>Nombre: {creationDetail.name}</p>
+      <p>Descripción: {creationDetail.description}</p>
+      <p>Letra: {creationDetail.letter}</p>
+      <p>Música: {creationDetail.sing}</p>
+      <p>Canción: {creationDetail.song}</p>
 
 
 
       <Link to={`/creation/${creationId}/edit`}><button>Editar</button></Link>
       <Link to="/creation/delete"><button>Borrar</button></Link>
-
+      <Link to="/creation/comment"><button>Añadir comentario</button></Link>
     </div>
   )
 }
