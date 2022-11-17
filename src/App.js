@@ -30,7 +30,7 @@ function App() {
         <Route path="/profile/new-creation" element={<CreationCreate/>} />
         <Route path="/creation/:creationId" element={<CreationDetail/>}/>
         <Route path="/creation" element={<CreationList/>} />
-        <Route path="/creation/edit" element={<CreationEdit/>}/>
+        <Route path="/creation/:creationId/edit" element={<CreationEdit/>}/>
 
         {/* errores */}
 

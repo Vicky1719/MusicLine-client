@@ -15,13 +15,14 @@ const creationDetailsService = (creationId) => {
  }
 
 
-// const creationListService = () => {
-//   return service.get("/creations")
-// }
+ const creationEditService = (creationId, creationUpdate) => {
+   return service.patch(`/creation/${creationId}/edit`, creationUpdate)
+ }
 
 
 export {
     createCreationService,
     creationListService,
-    creationDetailsService
+    creationDetailsService,
+    creationEditService
 }

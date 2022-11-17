@@ -6,7 +6,8 @@ import {useNavigate, useParams} from 'react-router-dom'
 import {createCreationService} from '../services/creation.services'
 
 
-function CreationCreate(props) {
+function CreationCreate(props)  {
+  
   const [nameInput, setNameInput] = useState("")
   const [descriptionInput, setDescriptionInput] = useState("")
   const [letterInput, setLetterInput] = useState()
@@ -26,13 +27,13 @@ const handleSubmit = async (event) => {
   const newCreation= {
     name: nameInput,
     description: descriptionInput,
-    letterr: letterInput,
+    letter: letterInput,
     music: musicInput,
     song: songInput,
     
   }
   try {
-    await createCreationService(newCreation)
+    await createCreationService( newCreation)
     navigate("/profile")
     
   } catch(error) {

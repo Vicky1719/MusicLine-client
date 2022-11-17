@@ -48,7 +48,7 @@ navigate("/error")
 
 
 
-      <Link to="/creation/edit"><button>Editar</button></Link>
+      <Link to={`/creation/${creationId}/edit`}><button>Editar</button></Link>
       <Link to="/creation/delete"><button>Borrar</button></Link>
 
     </div>
