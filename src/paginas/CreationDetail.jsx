@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import { useNavigate, UseNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams, Link } from "react-router-dom"
 import { creationDetailsService } from '../services/creation.services'
+
 
 
 function CreationDetail() {
@@ -45,6 +46,10 @@ navigate("/error")
       <p>{creationDetail.sing}</p>
       <p>{creationDetail.song}</p>
 
+
+
+      <Link to="/creation/edit"><button>Editar</button></Link>
+      <Link to="/creation/delete"><button>Borrar</button></Link>
 
     </div>
   )

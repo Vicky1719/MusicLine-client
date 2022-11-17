@@ -8,7 +8,7 @@ const {user} = useContext(AuthContext)
 const userId = user.user._id
 const navigate = useNavigate()
 
- // const { userId } = useParams()
+ 
 
   const [details, setDetails] = useState(null)
   const [isFetching, setIsFetching] = useState(true)
