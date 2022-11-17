@@ -37,6 +37,7 @@ function Profile() {
 
       navigate("/profile")
     } catch (error) {
+      console.log(error)
       navigate("/error")
     }
   }

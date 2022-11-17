@@ -22,8 +22,7 @@ function CreationCreate(props) {
  
 
 const handleSubmit = async (event) => {
-  event.preventDefault()
-
+  
   const newCreation= {
     name: nameInput,
     description: descriptionInput,
@@ -50,7 +49,7 @@ const handleSubmit = async (event) => {
             <label htmlFor="name">Nombre:</label>
             <input type="text" name="name" value={nameInput} onChange={handleNameChange} />
             <br />
-            <label htmlFor="description">:</label>
+            <label htmlFor="description">Descripción:</label>
             <input type="text" name="description" value={descriptionInput} onChange={handleDescriptionChange} />
             <br />
             <label htmlFor="letter">Letra de la creación:</label>

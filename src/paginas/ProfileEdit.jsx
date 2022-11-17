@@ -15,7 +15,7 @@ function Profile() {
   const [firstnameInput, setFirstnameInput] = useState("")
   const [lastnameInput, setLastnameInput] = useState("")
   const [emailInput, setEmailInput] = useState("")
-  const [passwordInput, setPasswordInput] = useState("")
+
 
   useEffect(() => {
     getData()
@@ -29,7 +29,6 @@ function Profile() {
       setFirstnameInput(response.data.firstname)
       setLastnameInput(response.data.lastname)
       setEmailInput(response.data.email)
-      setPasswordInput(response.data.password)
     
       setIsFetching(false)
     } catch (error) {
@@ -39,23 +38,23 @@ function Profile() {
   const handleUsernameChange = (event) => setUsernameInput(event.target.value)
   const handleFirstnameChange = (event) => setFirstnameInput(event.target.value)
   const handleLastnameChange = (event) => setLastnameInput(event.target.value)
-   const handlePasswordChange = (event) => setPasswordInput(event.target.value)
+  const handleEmailChange = (event) => setEmailInput(event.target.value)
+
 
   const handleUpdate = async (event) => {
 
-  event.preventDefault()
-  try {
+    event.preventDefault()
     const updatedProfile = {
         username: usernameInput,
       firstname: firstnameInput, 
       lastname: lastnameInput,
-      email: emailInput,
-      password: passwordInput,
+      email: emailInput
     }
-
+    
+    try {
   await updateProfileService(userId, updatedProfile)
   
-  navigate("/profile/edit")
+  navigate("/profile")
 
   }catch(error) {
     navigate("/error")
@@ -88,12 +87,13 @@ function Profile() {
       <label htmlFor="firstname">Nombre:</label>
       <input type="text" name="firstname" value={firstnameInput} onChange={handleFirstnameChange}></input>
       <br />
-      <label htmlFor="lastName">Last Name:</label>
+      <label htmlFor="lastName">Apellidos:</label>
       <input type="text" name="lastname" value={lastnameInput} onChange={handleLastnameChange}></input>
       <br />
-      <label htmlFor="password">Contraseña:</label>
-      <input type="text" name="password" onChange={handlePasswordChange}></input>
-      <br /> 
+      <label htmlFor="email">Email:</label>
+      <input type="text" name="email" value={emailInput} onChange={handleEmailChange}></input>
+      <br />
+      
       
       <button onClick={handleUpdate}>Actualizar</button>
       </form>

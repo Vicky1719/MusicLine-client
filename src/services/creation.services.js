@@ -2,7 +2,7 @@ import service from "./config.services";
 import { useParams } from "react-router-dom"
 
 const createCreationService = (newCreation) => {
-  return service.post("/creation/creationCreate", newCreation)
+  return service.post("/creation/create", newCreation)
 }
 
 const creationListService = () => {
@@ -11,7 +11,7 @@ const creationListService = () => {
 
 
 const creationDetailsService = () => {
-   return service.get("/creation")
+   return service.get("/creation/detail")
  }
 
 
