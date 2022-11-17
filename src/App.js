@@ -12,7 +12,7 @@ import ProfileEdit from './paginas/ProfileEdit';
 import CreationCreate from './paginas/CreationCreate';
 import CreationList from './paginas/CreationList';
 import CreationDetail from './paginas/CreationDetail';
-import isPrivate from './paginas/isPrivate';
+import IsPrivate from './paginas/IsPrivate'
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<isPrivate><Profile/></isPrivate>} />
+        <Route path="/profile" element={<IsPrivate><Profile/></IsPrivate>} />
         <Route path="/profile/edit" element={<ProfileEdit/>} />
         <Route path="/profile/new-creation" element={<CreationCreate/>} />
         <Route path="/creation/:creationId" element={<CreationDetail/>}/>

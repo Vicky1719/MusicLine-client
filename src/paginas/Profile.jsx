@@ -31,17 +31,7 @@ function Profile() {
     return <h3>...searching</h3>
   }
 
-  const handleDelete = async () => {
-    try {
-      await deleteProfileService(userId)
-
-      navigate("/profile")
-    } catch (error) {
-      console.log(error)
-      navigate("/error")
-    }
-  }
-
+  
   return (
     <div>
       <h3>Hola! {details.username} </h3>
@@ -49,8 +39,7 @@ function Profile() {
       <p>Apellidos: {details.lastname}</p>
     
 
-    <button onClick={handleDelete}>Borrar</button>
-      <Link to={"/profile/edit"}><button>Actualizar</button></Link>
+      <Link to={"/profile/edit"}><button>Editar</button></Link>
       <Link to={"/profile/new-creation"}><button>Crea una nueva creación</button></Link>
 
    

@@ -10,8 +10,8 @@ const creationListService = () => {
 }
 
 
-const creationDetailsService = () => {
-   return service.get("/creation/detail")
+const creationDetailsService = (creationId) => {
+   return service.get(`/creation/${creationId}/detail`)
  }
 
 

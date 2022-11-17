@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { useNavigate, useParams, Link } from "react-router-dom"
 import { deleteProfileService, getProfileDetailsService, updateProfileService } from "../services/profile.services"
+import {AuthContext} from "../context/auth.context"
 
 function Profile() {
+const {user} = useContext(AuthContext)
+const userId = user.user._id
+const navigate = useNavigate()
 
-  const navigate = useNavigate()
-
-  const { userId } = useParams()
+ // const { userId } = useParams()
 
   const [details, setDetails] = useState(null)
   const [isFetching, setIsFetching] = useState(true)
@@ -61,7 +63,7 @@ function Profile() {
   }
 
   }
-
+console.log("hola", user.user._id)
 
   if (isFetching === true) {
     return <h3>...cargando</h3>
@@ -69,9 +71,9 @@ function Profile() {
 
   const handleDelete = async () => {
     try {
-      await deleteProfileService()
+      await deleteProfileService(userId)
 
-      navigate("/profile")
+      navigate("/")
     } catch (error) {
       navigate("/error")
     }
