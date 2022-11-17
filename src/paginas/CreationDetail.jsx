@@ -1,41 +1,36 @@
-import { useState, useEffect } from 'react'
-import { useNavigate, useParams, Link } from "react-router-dom"
-import { creationDetailsService } from '../services/creation.services'
-
-
+import { useState, useEffect } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
+import { creationDetailsService } from "../services/creation.services";
+import { commentAddService } from "../services/comment.services";
 
 function CreationDetail() {
-  const navigate = useNavigate()
-  const {creationId} = useParams ()
-const [isFetching, setIsFetching ] = useState(true)
-const [creationDetail, setCreationDetails ] = useState(null)
+  const navigate = useNavigate();
+  const { creationId } = useParams();
+  const [isFetching, setIsFetching] = useState(true);
+  const [creationDetail, setCreationDetails] = useState("");
+  const [creationComment, setCreationComment] = useState([]);
 
-useEffect(() => {
-  getDetailsCreation()
-}, [])
+  useEffect(() => {
+    getCommentAdd();
+  }, []);
 
+  const getCommentAdd = async () => {
+    try {
+      const response2 = await creationDetailsService(creationId);
+      setCreationDetails(response2.data);
+      console.log("vieira", response2.data)
+      const response = await commentAddService(creationId);
+      setCreationComment(response.data);
+      console.log("hola", response.data);
+      setIsFetching(false);
+    } catch (error) {
+      navigate("/error");
+    }
+  };
 
-const getDetailsCreation = async () => {
-  try {
-    const response = await creationDetailsService(creationId)
-  setCreationDetails(response.data)
-  setIsFetching(false)
-  }catch(error){
-navigate("/error")
+  if (isFetching === true) {
+    return <h3>...buscando</h3>;
   }
-  
-  }
-
-
-  if ( isFetching === true) {
-    return (
-      <h3>...buscando</h3>
-    )
-  }
-
-
-
-
 
   return (
     <div>
@@ -45,14 +40,24 @@ navigate("/error")
       <p>Letra: {creationDetail.letter}</p>
       <p>Música: {creationDetail.sing}</p>
       <p>Canción: {creationDetail.song}</p>
+      {creationComment !== undefined && (
+        <p>
+          Comentarios:{" "}
+          {creationComment.map((eachComment) => {
+            return <p>{eachComment.description}</p>
+          })}
+        </p>
+      )}
 
-
-
-      <Link to={`/creation/${creationId}/edit`}><button>Editar</button></Link>
-      <Link to="/creation/delete"><button>Borrar</button></Link>
-      <Link to="/creation/comment"><button>Añadir comentario</button></Link>
+      <Link to={`/creation/${creationId}/edit`}>Editar</Link>
+      <Link to="/creation/delete">
+        <button>Borrar</button>
+      </Link>
+      <Link to={`/creation/${creationId}/comment`}>
+        <button>Añadir comentario</button>
+      </Link>
     </div>
-  )
+  );
 }
 
-export default CreationDetail
+export default CreationDetail;

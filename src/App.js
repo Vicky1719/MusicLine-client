@@ -13,6 +13,7 @@ import CreationCreate from './paginas/CreationCreate';
 import CreationList from './paginas/CreationList';
 import CreationDetail from './paginas/CreationDetail';
 import CreationEdit from "./paginas/CreationEdit";
+import CommentEdit from './paginas/CommentEdit';
 import IsPrivate from './paginas/IsPrivate'
 import CommentCreate from './paginas/CommentCreate';
 
@@ -32,7 +33,9 @@ function App() {
         <Route path="/creation/:creationId" element={<CreationDetail/>}/>
         <Route path="/creation" element={<CreationList/>} />
         <Route path="/creation/:creationId/edit" element={<CreationEdit/>}/>
-        <Route path="/creation/comment" element={<CommentCreate/>}/>
+        <Route path="/creation/:commentId/edit" element={<CommentEdit/>}/>
+        {/* <Route path="/creation/:creationId/delete" element={<CreationDetail/>}/> */}
+        <Route path="/creation/:creationId/comment" element={<CommentCreate/>}/>
        
         {/* errores */}
 

@@ -1,15 +1,14 @@
 import React from 'react'
-import navigate from "react"
 import {useEffect} from 'react'
 import {useState} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'
-import {createCommentService} from '../services/creation.services'
+import {createCommentService} from '../services/comment.services'
 import IsPrivate from './IsPrivate'
 
 
 function CommentCreate(props)  {
-  
- 
+  const {creationId} = useParams()
+  const navigate = useNavigate()
   const [descriptionInput, setDescriptionInput] = useState("")
  
 
@@ -19,18 +18,22 @@ function CommentCreate(props)  {
 
 const handleSubmit = async (event) => {
   event.preventDefault()
-  const newComment= {
+  
+  const newComments= {
  
     description: descriptionInput,
+    creation: creationId
+
    
     
   }
   try {
-    await createCommentService( newComment)
-    navigate("/profile")
+    await createCommentService( creationId, newComments)
+    console.log("casa", newComments)
+    navigate("/creation")
     
   } catch(error) {
-    console.log(error)
+    navigate("/error")
   }
 }
 
@@ -39,14 +42,14 @@ const handleSubmit = async (event) => {
   return (
     <div>
         <h3>Añade un comentario</h3>
-        <form>
+        <form onSubmit={handleSubmit}>
             
             <label htmlFor="description">Descripción:</label>
-            <input type="text" name="description" value={descriptionInput} onChange={handleDescriptionChange} />
+            <input type="text" name="description" onChange={handleDescriptionChange} />
             <br />
             
            
-            <button onClick={handleSubmit}>Comentar</button>
+            <button type="submit">Comentar</button>
         </form>
     </div>
   )
