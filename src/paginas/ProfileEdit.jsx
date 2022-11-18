@@ -2,6 +2,9 @@ import { useEffect, useState, useContext } from "react"
 import { useNavigate, useParams, Link } from "react-router-dom"
 import { deleteProfileService, getProfileDetailsService, updateProfileService } from "../services/profile.services"
 import {AuthContext} from "../context/auth.context"
+import { Button } from 'react-bootstrap';
+import Form from "react-bootstrap/Form";
+
 
 function Profile() {
 const {user} = useContext(AuthContext)
@@ -82,28 +85,46 @@ console.log("hola", user.user._id)
   return (
     <div>
       <h3> Hola! {details.firstname} </h3>
-      <form>
-      <label htmlFor="username">Usuario:</label>
-      <input type="text" name="username" value={usernameInput} onChange={handleUsernameChange}></input>
-      <br />
-      <label htmlFor="firstname">Nombre:</label>
-      <input type="text" name="firstname" value={firstnameInput} onChange={handleFirstnameChange}></input>
-      <br />
-      <label htmlFor="lastName">Apellidos:</label>
-      <input type="text" name="lastname" value={lastnameInput} onChange={handleLastnameChange}></input>
-      <br />
-      <label htmlFor="email">Email:</label>
-      <input type="text" name="email" value={emailInput} onChange={handleEmailChange}></input>
-      <br />
-      
-      
-      <button onClick={handleUpdate}>Actualizar</button>
-      </form>
-      <div>
 
-        <button onClick={handleDelete}>Borrar</button>
+      <div style={{ display: 'block', 
+width: 700, 
+padding: 30 }}>
+<h4>Accede</h4>
+<Form onSubmit={handleUpdate}>
+<Form.Group>
+<Form.Label>Usuario:</Form.Label>
+<Form.Control type="text" name="username" value={usernameInput} onChange={handleUsernameChange} />
+<Button type="submit">Login</Button>
+</Form.Group>
+
+<Form.Group>
+<Form.Label>Nombre:</Form.Label>
+<Form.Control type="text" name="firstname" value={firstnameInput} onChange={handleFirstnameChange} />
+</Form.Group>
+
+<Form.Group>
+<Form.Label>Apellidos:</Form.Label>
+<Form.Control type="text" name="lastname" value={lastnameInput} onChange={handleLastnameChange} />
+</Form.Group>
+
+<Form.Group>
+<Form.Label>Email:</Form.Label>
+<Form.Control type="text" name="email" value={emailInput} onChange={handleEmailChange} />
+</Form.Group>
+
+
+
+<Button onClick={handleUpdate}>Actualizar</Button>
+
+      
+          
+      
+        <Button onClick={handleDelete}>Borrar</Button>
+      </Form>
+  
+
         
-      </div>
+  </div>
     </div>
   )
 }

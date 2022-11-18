@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { creationDetailsService, creationDeleteService } from "../services/creation.services";
 import { commentAddService } from "../services/comment.services";
+import { Button } from 'react-bootstrap';
+import Form from "react-bootstrap/Form";
+
 
 function CreationDetail() {
   const navigate = useNavigate();
@@ -76,6 +79,7 @@ function CreationDetail() {
       </Link>
     </div>
   );
+
 }
 
 export default CreationDetail;

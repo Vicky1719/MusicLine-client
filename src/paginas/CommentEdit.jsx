@@ -3,7 +3,8 @@ import {useEffect} from 'react'
 import {useState} from 'react'
 import {useNavigate, useParams, Link } from 'react-router-dom'
 import { commentEditService} from '../services/comment.services'
-
+import  Button  from 'react-bootstrap/Button';
+import Form from "react-bootstrap/Form";
 
 function CommentEdit() {
     const { commentId } = useParams()
@@ -53,21 +54,26 @@ function CommentEdit() {
 
 
   return (
-    <div>
-        <h3>Edita tu comentario</h3>
-        <form>
-           
-            <label htmlFor="description">Descripción:</label>
-            <input type="text" name="description" value={descriptionInput} onChange={handleDescriptionChange} />
-            <br />
-            
+    
+<div>
+<h3>Edita tu comentario</h3>
+<Form onSubmit={handleSubmit}>
+    
+<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+  <Form.Label htmlFor="description">Descripción:</Form.Label>
+  <Form.Control as="textarea" rows={3} type="text" name="description" value={descriptionInput} onChange={handleDescriptionChange}/>
+</Form.Group>
+<Button type="submit">Comentar</Button>
+</Form>
+
+        
             <Link to={`/creation/${commentId}/edit`}><button>Editar</button></Link>
             <Link to= {`/creation/${commentId}/delete`}><button>Borrar</button></Link>
 
 
             
 
-        </form>
+       
     </div>
   )
 }

@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams, Link } from "react-router-dom"
 import { getProfileDetailsService } from "../services/profile.services"
+import { Button } from 'react-bootstrap';
+import Form from "react-bootstrap/Form";
+
 
 function Profile() {
 

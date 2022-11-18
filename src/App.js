@@ -28,7 +28,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<IsPrivate><Profile/></IsPrivate>} />
+        <Route path="/profile" element={<Profile/>} />
         <Route path="/profile/edit" element={<ProfileEdit/>} />
         <Route path="/profile/new-creation" element={<CreationCreate/>} />
         <Route path="/creation/:creationId" element={<CreationDetail/>}/>

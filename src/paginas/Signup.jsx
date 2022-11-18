@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signupService } from "../services/auth.services"
+import { Button } from 'react-bootstrap';
+import Form from "react-bootstrap/Form";
+
 
 function Signup() {
 
@@ -45,52 +48,39 @@ function Signup() {
 
   return (
     <div>
-      <h1>Regístrate</h1>
-      <form onSubmit={handleSignup}>
-        <label>Nombre:</label>
-        <input
-          type="firstname"
-          name="firstname"
-          value={firstname}
-          onChange={handleFirstnameChange}
-        />
+      <h3> Hola! {firstname} </h3>
 
-        <label>Apellidos: </label>
-        <input
-          type="lastname"
-          name="lastname"
-          value={lastname}
-          onChange={handleLastnameChange}
-        />
+      <div style={{ display: 'block', 
+width: 700, 
+padding: 30 }}>
+<h4>Regístrate</h4>
+<Form onSubmit={handleSignup}>
+<Form.Group>
+<Form.Label>Usuario:</Form.Label>
+<Form.Control type="text" name="username" value={username} onChange={handleUsernameChange} />
 
-<label>Usuario: </label>
-        <input
-          type="username"
-          name="username"
-          value={username}
-          onChange={handleUsernameChange}
-        />
+</Form.Group>
 
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleEmailChange}
-        />
+<Form.Group>
+<Form.Label>Nombre:</Form.Label>
+<Form.Control type="text" name="firstname" value={firstname} onChange={handleFirstnameChange} />
+</Form.Group>
 
-        <label>Contraseña:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        <button type="submit">Sign up</button>
+<Form.Group>
+<Form.Label>Apellidos:</Form.Label>
+<Form.Control type="text" name="lastname" value={lastname} onChange={handleLastnameChange} />
+</Form.Group>
 
+<Form.Group>
+<Form.Label>Email:</Form.Label>
+<Form.Control type="text" name="email" value={email} onChange={handleEmailChange} />
+</Form.Group>
+<Button onClick={handleSignup}>Editar</Button>
+      
         {errorMessage !== "" && <p>{errorMessage}</p>}
 
-      </form>
+      </Form>
+    </div>
     </div>
   );
 }

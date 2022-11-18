@@ -4,6 +4,8 @@ import {useEffect} from 'react'
 import {useState} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'
 import { creationDetailsService, creationEditService} from '../services/creation.services'
+import  Button  from 'react-bootstrap/Button';
+import Form from "react-bootstrap/Form";
 
 
 function CreationEdit() {
@@ -66,28 +68,42 @@ function CreationEdit() {
 
 
   return (
-    <div>
-        <h3>Crea tu nueva creración</h3>
-        <form>
-            <label htmlFor="name">Nombre:</label>
-            <input type="text" name="name" value={nameInput} onChange={handleNameChange} />
-            <br />
-            <label htmlFor="description">Descripción:</label>
-            <input type="text" name="description" value={descriptionInput} onChange={handleDescriptionChange} />
-            <br />
-            <label htmlFor="letter">Letra de la creación:</label>
-            <input type="text" name="letter" value={letterInput} onChange={handleLetterChange} />
-            <br />
-            <label htmlFor="music">Música:</label>
-            <input type="text" name="music" value={musicInput} onChange={handleMusicChange} />
-            <br />
-            <label htmlFor="song">Canción:</label>
-            <input type="text" name="song" value={songInput} onChange={handleSongChange} />
-            <br />
-           
-            <button onClick={handleSubmit}>Editar</button>
-        </form>
-    </div>
+    
+    
+    
+<div style={{ display: 'block', 
+width: 700, 
+padding: 30 }}>
+<h4>Edita tu creación</h4>
+<Form>
+<Form.Group>
+<Form.Label>Nombre:</Form.Label>
+<Form.Control type="text" name="name" value={nameInput} onChange={handleNameChange} />
+</Form.Group>
+
+<Form.Group>
+<Form.Label>Description:</Form.Label>
+<Form.Control type="text" name="description" value={descriptionInput} onChange={handleDescriptionChange} />
+</Form.Group>
+
+<Form.Group>
+<Form.Label>Letra de la canción:</Form.Label>
+<Form.Control ype="text" name="letter" value={letterInput} onChange={handleLetterChange} />
+</Form.Group>
+<Form.Group>
+<Form.Label>Música:</Form.Label>
+<Form.Control type="text" name="music" value={musicInput} onChange={handleMusicChange}  />
+</Form.Group>
+<Form.Group>
+<Form.Label>Canción completa:</Form.Label>
+<Form.Control type="text" name="song" value={songInput} onChange={handleSongChange}  />
+</Form.Group>
+<Button onClick={handleSubmit}>Editar</Button>
+
+
+
+</Form>
+</div>
   )
 }
 
