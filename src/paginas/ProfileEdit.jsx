@@ -4,6 +4,7 @@ import { deleteProfileService, getProfileDetailsService, updateProfileService } 
 import {AuthContext} from "../context/auth.context"
 import { Button } from 'react-bootstrap';
 import Form from "react-bootstrap/Form";
+import Spinner from 'react-bootstrap/Spinner'
 
 
 function Profile() {
@@ -66,7 +67,7 @@ const navigate = useNavigate()
   }
 
   }
-console.log("hola", user.user._id)
+
 
   if (isFetching === true) {
     return <h3>...cargando</h3>
@@ -86,15 +87,14 @@ console.log("hola", user.user._id)
     <div>
       <h3> Hola! {details.firstname} </h3>
 
-      <div style={{ display: 'block', 
+      <div className='fondo' style={{
 width: 700, 
 padding: 30 }}>
 <h4>Accede</h4>
-<Form onSubmit={handleUpdate}>
+<Form className="form" onSubmit={handleUpdate}>
 <Form.Group>
 <Form.Label>Usuario:</Form.Label>
 <Form.Control type="text" name="username" value={usernameInput} onChange={handleUsernameChange} />
-<Button type="submit">Login</Button>
 </Form.Group>
 
 <Form.Group>
@@ -119,7 +119,6 @@ padding: 30 }}>
       
           
       
-        <Button onClick={handleDelete}>Borrar</Button>
       </Form>
   
 

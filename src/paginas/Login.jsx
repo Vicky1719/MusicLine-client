@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { loginService } from "../services/auth.services";
 import { useNavigate } from "react-router-dom";
-import  Button  from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
-
 
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
@@ -34,9 +32,8 @@ function Login() {
 
       localStorage.setItem("authToken", response.data.authToken);
 
-      authenticatorUser(); 
+      authenticatorUser();
       navigate("/profile");
-      
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);
@@ -47,44 +44,39 @@ function Login() {
   };
 
   return (
+    <div
+      style={{
+        width: 700,
+        padding: 30,
+      }}
+    >
+      <h4>Accede</h4>
+      <Form className="form" onSubmit={handleLogin}>
+        <Form.Group>
+          <Form.Label>Email:</Form.Label>
+          <Form.Control
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+        </Form.Group>
 
-    <div style={{ display: 'block', 
-width: 700, 
-padding: 30 }}>
-<h4>Accede</h4>
-<Form onSubmit={handleLogin}>
-<Form.Group>
-<Form.Label>Email:</Form.Label>
-<Form.Control type="email"
-          name="email"
-          value={email}
-          onChange={handleEmailChange} />
-</Form.Group>
+        <Form.Group>
+          <Form.Label>Contraseña:</Form.Label>
+          <Form.Control
+            type="password"
+            name="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </Form.Group>
 
-<Form.Group>
-<Form.Label>Contraseña:</Form.Label>
-<Form.Control  type="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange} />
-</Form.Group>
+        <Button type="submit">Login</Button>
 
-
-<Button type="submit">Login</Button>
-
-{errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
-
-
-
-</Form>
-</div>
-    
-   
-
-        
-
-
-     
+        {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
+      </Form>
+    </div>
   );
 }
 

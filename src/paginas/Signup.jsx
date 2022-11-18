@@ -47,14 +47,14 @@ function Signup() {
   };
 
   return (
-    <div>
-      <h3> Hola! {firstname} </h3>
+    <div className="fondo" >
+     
 
-      <div style={{ display: 'block', 
+      <div style={{ 
 width: 700, 
 padding: 30 }}>
-<h4>Regístrate</h4>
-<Form onSubmit={handleSignup}>
+<h4 >Regístrate</h4>
+<Form className="form"  onSubmit={handleSignup}>
 <Form.Group>
 <Form.Label>Usuario:</Form.Label>
 <Form.Control type="text" name="username" value={username} onChange={handleUsernameChange} />
@@ -75,7 +75,12 @@ padding: 30 }}>
 <Form.Label>Email:</Form.Label>
 <Form.Control type="text" name="email" value={email} onChange={handleEmailChange} />
 </Form.Group>
-<Button onClick={handleSignup}>Editar</Button>
+
+<Form.Group>
+<Form.Label>Contraseña:</Form.Label>
+<Form.Control type="password" name="password" value={password} onChange={handlePasswordChange} />
+</Form.Group>
+<Button onClick={handleSignup}>Regístrate</Button>
       
         {errorMessage !== "" && <p>{errorMessage}</p>}
 

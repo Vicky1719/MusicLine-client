@@ -1,12 +1,7 @@
-import React from 'react'
-import { Button } from 'react-bootstrap';
-import Form from "react-bootstrap/Form";
-
+import React from "react";
 
 function Home() {
-  return (
-    <div>Home</div>
-  )
+  return <div className="titulo">Music Line</div>;
 }
 
-export default Home
+export default Home;

@@ -1,58 +1,51 @@
-import { createContext, useState, useEffect } from "react"
-import { verifyService } from "../services/auth.services"
-
-const AuthContext = createContext()
+import { createContext, useState, useEffect } from "react";
+import { verifyService } from "../services/auth.services";
+import Spinner from "react-bootstrap/Spinner";
+const AuthContext = createContext();
 
 function AuthWrapper(props) {
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const [user, setUser] = useState(null)
-    const [isFetching, setIsFetching] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+  const [isFetching, setIsFetching] = useState(true);
 
-    useEffect(() => {
-        authenticatorUser()
-    }, [])
+  useEffect(() => {
+    authenticatorUser();
+  }, []);
 
-    const authenticatorUser = async () => {
-        try {
+  const authenticatorUser = async () => {
+    try {
+      const response = await verifyService();
 
-            const response = await verifyService()
-            console.log(response)
-
-            setIsLoggedIn(true)
-            setUser(response.data)
-            setIsFetching(false)
-
-        } catch (error) {
-            setIsLoggedIn(false)
-            setUser(null)
-            setIsFetching(false)
-        }
-
+      setIsLoggedIn(true);
+      setUser(response.data);
+      setIsFetching(false);
+    } catch (error) {
+      setIsLoggedIn(false);
+      setUser(null);
+      setIsFetching(false);
     }
+  };
 
-    const passedContext = {
-        isLoggedIn,
-        user,
-        authenticatorUser,
-        setIsLoggedIn,
-        setUser
-    }
+  const passedContext = {
+    isLoggedIn,
+    user,
+    authenticatorUser,
+    setIsLoggedIn,
+    setUser,
+  };
 
-    if (isFetching === true) {
-        return (
-            <div className="App">
-                <h3>... Validando al usuario</h3>
-            </div>
-        )
-    }
+  if (isFetching === true) {
     return (
-        <AuthContext.Provider value={passedContext}>
-            {props.children}
-        </AuthContext.Provider>
-    )
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
+  }
+  return (
+    <AuthContext.Provider value={passedContext}>
+      {props.children}
+    </AuthContext.Provider>
+  );
 }
 
-export {
-    AuthContext,
-    AuthWrapper
-}
+export { AuthContext, AuthWrapper };

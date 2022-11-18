@@ -1,39 +1,49 @@
-import { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
-import { AuthContext } from "../context/auth.context"
-import { Button } from 'react-bootstrap';
-import Form from "react-bootstrap/Form";
-
+import { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 
 function Navbar() {
-
-  const { authenticatorUser, isLoggedIn, setUser, setIsLoggedIn } = useContext(AuthContext)
+  const { authenticatorUser, isLoggedIn, setUser, setIsLoggedIn } =
+    useContext(AuthContext);
 
   const handleLogout = () => {
-    localStorage.removeItem("authToken")
-    authenticatorUser()
-  }
+    localStorage.removeItem("authToken");
+    authenticatorUser();
+  };
   return (
-    <div>
+    <div className="fondo">
       {isLoggedIn === true ? (
-        <div>
-          <NavLink to="/">Inicio</NavLink>
-          <NavLink to="/profile">Perfil</NavLink>
-          <NavLink to="/creation">Creaciones</NavLink>
-
-          <button onClick={handleLogout}>Cerrar sesión</button>
+        <div className="inicio">
+          <div className="inicio-menu">
+            <NavLink to="/">Inicio</NavLink>
+          </div>
+          <div className="inicio-menu">
+            <NavLink to="/profile">Perfil</NavLink>
+          </div>
+          <div className="inicio-menu">
+            <NavLink to="/creation">Creaciones</NavLink>
+          </div>
+          <NavLink to="/">
+            <button onClick={handleLogout}>Logout</button>
+          </NavLink>
         </div>
       ) : (
-        <div>
-          <NavLink to="/">Inicio</NavLink>
-          <NavLink to="/creation">Creaciones</NavLink>
-          <NavLink to="/signup">Regístrate</NavLink>
-          <NavLink to="/login">Accede</NavLink>
+        <div className="inicio">
+          <div className="inicio-menu">
+            <NavLink to="/">Inicio</NavLink>
+          </div>
+          <div className="inicio-menu">
+            <NavLink to="/creation">Creaciones</NavLink>
+          </div>
+          <div className="inicio-menu">
+            <NavLink to="/signup">Regístrate</NavLink>
+          </div>
+          <div className="inicio-menu">
+            <NavLink to="/login">Accede</NavLink>
+          </div>
         </div>
-      )
-      }
+      )}
     </div>
-
-  )
+  );
 }
-export default Navbar
+export default Navbar;

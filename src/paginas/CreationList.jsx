@@ -1,56 +1,50 @@
-import { useEffect } from "react"
-import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import {creationListService} from "../services/creation.services"
-import { Button } from 'react-bootstrap';
+import { useEffect } from "react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { creationListService } from "../services/creation.services";
+import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-
-
+import Spinner from "react-bootstrap/Spinner";
 
 function CreationList() {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
+  const [list, setList] = useState([]);
+  const [isFetching, setIsFetching] = useState(true);
 
-    const [list, setList] = useState([])
-    const [isFetching, setIsFetching] = useState(true)
-
-    useEffect(() => {
-    getCreationList()
-    }, [])
+  useEffect(() => {
+    getCreationList();
+  }, []);
 
   const getCreationList = async () => {
     try {
-      const response = await creationListService()
-      setList(response.data)
-      setIsFetching(false)
-
-    } catch(error) {
-    }
-  }
+      const response = await creationListService();
+      setList(response.data);
+      setIsFetching(false);
+    } catch (error) {}
+  };
 
   if (isFetching === true) {
-    return <h3>...buscando</h3>
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
   }
 
   return (
-    <div>
-        
-
-        {list.map((eachCreation) => {
-            return (
-                <p key={eachCreation._id}>
-                    <Link to={`/creation/${eachCreation._id}`}>
-                      <h4>{eachCreation.name}</h4>
-                      </Link>
-                      
-                    
-                </p>
-            )
-        })}
-
+    <div className="fondo">
+      {list.map((eachCreation) => {
+        return (
+          <p key={eachCreation._id}>
+            <Link to={`/creation/${eachCreation._id}`}>
+              <h4>{eachCreation.name}</h4>
+            </Link>
+          </p>
+        );
+      })}
     </div>
-  )
+  );
 }
 
-export default CreationList
-
+export default CreationList;

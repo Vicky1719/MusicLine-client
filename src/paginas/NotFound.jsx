@@ -1,13 +1,7 @@
-import React from 'react'
-import { Button } from 'react-bootstrap';
-import Form from "react-bootstrap/Form";
-
-
+import React from "react";
 
 function NotFound() {
-  return (
-    <div>NotFound</div>
-  )
+  return <div className="fondo">NotFound</div>;
 }
 
-export default NotFound
+export default NotFound;

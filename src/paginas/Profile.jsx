@@ -3,6 +3,7 @@ import { useNavigate, useParams, Link } from "react-router-dom"
 import { getProfileDetailsService } from "../services/profile.services"
 import { Button } from 'react-bootstrap';
 import Form from "react-bootstrap/Form";
+import Spinner from 'react-bootstrap/Spinner'
 
 
 function Profile() {
@@ -31,12 +32,14 @@ function Profile() {
 
 
   if (isFetching === true) {
-    return <h3>...searching</h3>
+    return  <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>
   }
 
   
   return (
-    <div>
+    <div className='fondo'>
       <h3>Hola! {details.username} </h3>
       <p>Nombre: {details.firstname}</p>
       <p>Apellidos: {details.lastname}</p>

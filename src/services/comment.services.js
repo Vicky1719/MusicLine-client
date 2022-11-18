@@ -2,7 +2,6 @@ import service from "./config.services";
 import { useParams } from "react-router-dom"
 
 const createCommentService = (creationId, newComments) => {
-  console.log("lata",`/creation/${creationId}/comment`)
   return service.post(`/creation/${creationId}/comment`, newComments)
  
 }

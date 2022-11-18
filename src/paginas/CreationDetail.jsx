@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { creationDetailsService, creationDeleteService } from "../services/creation.services";
+import {
+  creationDetailsService,
+  creationDeleteService,
+} from "../services/creation.services";
 import { commentAddService } from "../services/comment.services";
-import { Button } from 'react-bootstrap';
-import Form from "react-bootstrap/Form";
-
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
+import Spinner from "react-bootstrap/Spinner";
 
 function CreationDetail() {
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const { creationId } = useParams();
   const [isFetching, setIsFetching] = useState(true);
@@ -21,10 +25,8 @@ function CreationDetail() {
     try {
       const response2 = await creationDetailsService(creationId);
       setCreationDetails(response2.data);
-      console.log("vieira", response2.data)
       const response = await commentAddService(creationId);
       setCreationComment(response.data);
-      console.log("hola", response.data);
       setIsFetching(false);
     } catch (error) {
       navigate("/error");
@@ -32,24 +34,24 @@ function CreationDetail() {
   };
 
   const handleDelete = async () => {
-
     try {
+      await creationDeleteService(creationId);
 
-      await creationDeleteService(creationId)
-
-      navigate("/profile/my-creation")
-      
+      navigate("/profile/my-creation");
     } catch (error) {
-      console.log(error)
-      navigate("/error")
+      navigate("/error");
     }
-
-  }
+  };
 
   if (isFetching === true) {
-    return <h3>...buscando</h3>;
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
   }
-
+console.log("ksks", creationDetail )
+console.log("dedo", user.user._id)
   return (
     <div>
       <h2>Detalles</h2>
@@ -62,24 +64,25 @@ function CreationDetail() {
         <p>
           Comentarios:{" "}
           {creationComment.map((eachComment) => {
-            return <p>{eachComment.description}</p>
+            return <p>{eachComment.description}</p>;
           })}
         </p>
       )}
+      {user.user._id === creationDetail.user && (
+        <Link to={`/creation/${creationId}/edit`}>
+          <button>Editar</button></Link>
+        )}
 
-      <Link to={`/creation/${creationId}/edit`}>Editar</Link>
+{user.user._id === creationDetail.user && (
+          <button onClick={handleDelete}>Borrar</button>
 
-      
-        <button onClick={handleDelete}>Borrar</button>
-      
-
+        )}
 
       <Link to={`/creation/${creationId}/comment`}>
         <button>Añadir comentario</button>
       </Link>
     </div>
   );
-
 }
 
 export default CreationDetail;
