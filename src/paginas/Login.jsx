@@ -50,7 +50,7 @@ function Login() {
         padding: 30,
       }}
     >
-      <h4>Accede</h4>
+      <h1>Accede</h1>
       <Form className="form" onSubmit={handleLogin}>
         <Form.Group>
           <Form.Label>Email:</Form.Label>

@@ -54,6 +54,7 @@ console.log("ksks", creationDetail )
 console.log("dedo", user.user._id)
   return (
     <div>
+      
       <h2>Detalles</h2>
       <p>Nombre: {creationDetail.name}</p>
       <p>Descripción: {creationDetail.description}</p>

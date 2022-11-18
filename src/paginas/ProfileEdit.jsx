@@ -85,7 +85,7 @@ const navigate = useNavigate()
 
   return (
     <div>
-      <h3> Hola! {details.firstname} </h3>
+     
 
       <div className='fondo' style={{
 width: 700, 

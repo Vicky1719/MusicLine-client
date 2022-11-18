@@ -4,6 +4,7 @@ import { getProfileDetailsService } from "../services/profile.services"
 import { Button } from 'react-bootstrap';
 import Form from "react-bootstrap/Form";
 import Spinner from 'react-bootstrap/Spinner'
+import Card from 'react-bootstrap/Card'
 
 
 function Profile() {
@@ -40,9 +41,9 @@ function Profile() {
   
   return (
     <div className='fondo'>
-      <h3>Hola! {details.username} </h3>
+      < Card body style={{backgroundColor:"lightblue"}}><h3>Hola! {details.username} </h3>
       <p>Nombre: {details.firstname}</p>
-      <p>Apellidos: {details.lastname}</p>
+      <p>Apellidos: {details.lastname}</p></Card>
      
 
       <Link to={"/profile/edit"}><button>Editar</button></Link>

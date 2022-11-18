@@ -5,6 +5,7 @@ import { creationListService } from "../services/creation.services";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
+import Card from 'react-bootstrap/Card'
 
 function CreationList() {
   const navigate = useNavigate();
@@ -35,10 +36,10 @@ function CreationList() {
   return (
     <div className="fondo">
       {list.map((eachCreation) => {
-        return (
+        return  (
           <p key={eachCreation._id}>
             <Link to={`/creation/${eachCreation._id}`}>
-              <h4>{eachCreation.name}</h4>
+           < Card body style={{backgroundColor:"lightblue", width: "250px", textDecoration: "none"}} >{eachCreation.name}</Card>
             </Link>
           </p>
         );

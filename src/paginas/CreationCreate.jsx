@@ -41,7 +41,7 @@ function CreationCreate(props) {
 
   return (
     <div className="fondo" style={{ width: 700, padding: 30 }}>
-      <h4>Crea tu nueva creación</h4>
+      <h1>Crea tu nueva creación</h1>
       <Form className="form" onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Nombre:</Form.Label>
