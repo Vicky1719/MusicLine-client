@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams, Link } from "react-router-dom"
-import { deleteProfileService, getProfileDetailsService, updateProfileService } from "../services/profile.services"
+import { getProfileDetailsService } from "../services/profile.services"
 
 function Profile() {
 
@@ -37,16 +37,11 @@ function Profile() {
       <h3>Hola! {details.username} </h3>
       <p>Nombre: {details.firstname}</p>
       <p>Apellidos: {details.lastname}</p>
-    
+     
 
       <Link to={"/profile/edit"}><button>Editar</button></Link>
       <Link to={"/profile/new-creation"}><button>Crea una nueva creación</button></Link>
-
-   
-      <div>
-
-        
-      </div>
+      <Link to={"/profile/my-creation"}><button>Mis creaciones</button></Link>
     </div>
   )
 }

@@ -12,8 +12,13 @@ const deleteProfileService = (userId) => {
     return service.delete (`/profile/${userId}/delete`)
 }
 
+const userCreationService = () => {
+    return service.get("/creation/my-creation")
+}
+
 export{
     getProfileDetailsService,
     updateProfileService,
-    deleteProfileService
+    deleteProfileService,
+    userCreationService
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import navigate from "react"
 import {useEffect} from 'react'
 import {useState} from 'react'
-import {useNavigate, useParams} from 'react-router-dom'
+import {useNavigate, useParams, Link} from 'react-router-dom'
 import {createCreationService} from '../services/creation.services'
 
 
@@ -34,10 +34,10 @@ const handleSubmit = async (event) => {
   }
   try {
     await createCreationService( newCreation)
-    navigate("/profile")
+   // navigate("/my-creation")
     
   } catch(error) {
-    console.log(error)
+    navigate(error)
   }
 }
 
@@ -62,8 +62,9 @@ const handleSubmit = async (event) => {
             <label htmlFor="song">Canción:</label>
             <input type="text" name="song" value={songInput} onChange={handleSongChange} />
             <br />
+
+            <Link to={"/profile/my-creation"}><button onClick={handleSubmit}>Crea</button></Link>
            
-            <button onClick={handleSubmit}>Crea</button>
         </form>
     </div>
   )

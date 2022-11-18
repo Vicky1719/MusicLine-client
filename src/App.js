@@ -16,6 +16,7 @@ import CreationEdit from "./paginas/CreationEdit";
 import CommentEdit from './paginas/CommentEdit';
 import IsPrivate from './paginas/IsPrivate'
 import CommentCreate from './paginas/CommentCreate';
+import MisCreaciones from './paginas/MisCreaciones';
 
 function App() {
   return (
@@ -34,8 +35,10 @@ function App() {
         <Route path="/creation" element={<CreationList/>} />
         <Route path="/creation/:creationId/edit" element={<CreationEdit/>}/>
         <Route path="/creation/:commentId/edit" element={<CommentEdit/>}/>
-        {/* <Route path="/creation/:creationId/delete" element={<CreationDetail/>}/> */}
         <Route path="/creation/:creationId/comment" element={<CommentCreate/>}/>
+       
+        <Route path= "/profile/my-creation" element={<MisCreaciones/>}/>
+
        
         {/* errores */}
 

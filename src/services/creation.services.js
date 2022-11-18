@@ -19,6 +19,10 @@ const creationDetailsService = (creationId) => {
    return service.patch(`/creation/${creationId}/edit`, creationUpdate)
  }
 
+ const creationDeleteService = (creationId) => {
+  return service.delete(`/creation/${creationId}/delete`)
+}
+
  
  
 export {
@@ -26,5 +30,6 @@ export {
     creationListService,
     creationDetailsService,
     creationEditService,
+    creationDeleteService
    
 }

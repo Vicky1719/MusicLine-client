@@ -30,7 +30,7 @@ const handleSubmit = async (event) => {
   try {
     await createCommentService( creationId, newComments)
     console.log("casa", newComments)
-    navigate("/creation")
+    navigate(`/creation/${creationId}`)
     
   } catch(error) {
     navigate("/error")

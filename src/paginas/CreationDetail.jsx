@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { creationDetailsService } from "../services/creation.services";
+import { creationDetailsService, creationDeleteService } from "../services/creation.services";
 import { commentAddService } from "../services/comment.services";
 
 function CreationDetail() {
@@ -28,6 +28,21 @@ function CreationDetail() {
     }
   };
 
+  const handleDelete = async () => {
+
+    try {
+
+      await creationDeleteService(creationId)
+
+      navigate("/profile/my-creation")
+      
+    } catch (error) {
+      console.log(error)
+      navigate("/error")
+    }
+
+  }
+
   if (isFetching === true) {
     return <h3>...buscando</h3>;
   }
@@ -50,9 +65,12 @@ function CreationDetail() {
       )}
 
       <Link to={`/creation/${creationId}/edit`}>Editar</Link>
-      <Link to="/creation/delete">
-        <button>Borrar</button>
-      </Link>
+
+      
+        <button onClick={handleDelete}>Borrar</button>
+      
+
+
       <Link to={`/creation/${creationId}/comment`}>
         <button>Añadir comentario</button>
       </Link>
