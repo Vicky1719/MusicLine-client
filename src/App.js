@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Navbar from "./paginas/Navbar";
+import Navbarr from "./paginas/Navbarr";
 import { Routes, Route } from "react-router-dom";
 import Signup from "./paginas/Signup";
 import Login from "./paginas/Login";
@@ -21,7 +21,7 @@ import MisCreaciones from "./paginas/MisCreaciones";
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <Navbarr />
 
       <Routes>
         <Route path="/" element={<Home />} />
